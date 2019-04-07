@@ -21,10 +21,31 @@ void coutVector(vector<string> &v)
 	if (v.empty())
 		cout << "vector is empty!" << endl;
 	vector<string>::iterator iter;
+	string::iterator sIter;
 	for (iter = v.begin(); iter != v.end(); ++iter)
 	{
-		cout << *iter << endl;
+		if ((*iter) == "")//空字符串不打印
+		{
+			continue;
+		}
+		else
+		{
+			sIter = (*iter).begin();//删除字符串首尾空字符
+			if ((*sIter) == ' ')
+			{
+				//cout << "begin space";
+				(*iter).erase(sIter);
+			}
+			sIter = (*iter).end() - 1;
+			if ((*sIter) == ' ')
+			{
+				//cout << "end space";
+				(*iter).erase(sIter);
+			}			
+			cout << *iter << " ";
+		}
 	}
+	cout << endl;
 }
 void moveLeft(string& s, int n)
 {//字符串循环左移n位
@@ -52,49 +73,63 @@ void moveLeftData(vector<string>& data)
 }
 void stringTrim(vector<string>& data)
 {//去重，将空格/制表/换行/回车 换成空格
+	vector<string> dataTemp;
 	vector<string>::iterator iter;
 	string::iterator sIter;
+	vector<string>::iterator tempIter;
 	string s;
 	int n = 0;//计数器
+	dataTemp = data;
 	for (iter = data.begin(); iter != data.end(); ++iter)
 	{
-		s = (*iter);			//先将字符串删除，然后将处理后的字符串重新填回来
 		(*iter).clear();
-		for (sIter = s.begin(); sIter != s.end(); ++sIter)
+	}
+	data.clear();
+	for (iter = dataTemp.begin(); iter != dataTemp.end(); ++iter)
+	{
+		tempIter = find(data.begin(), data.end(), (*iter));
+		if (tempIter < data.begin() || tempIter >= data.end())//去重
 		{
-			if ((*sIter >= '0' && *sIter <= '9') || (*sIter >= 'a' && *sIter <= 'z') ||
-				(*sIter >= 'A' && *sIter <= 'Z'))
+			s = (*iter);			//先将字符串删除，然后将处理后的字符串重新填回来
+			(*iter).clear();
+			for (sIter = s.begin(); sIter != s.end(); ++sIter)
 			{
-				if (-1 == (*iter).find(*sIter))//去重
+				if ((*sIter >= '0' && *sIter <= '9') || (*sIter >= 'a' && *sIter <= 'z') ||
+					(*sIter >= 'a' && *sIter <= 'z'))
 				{
+					//if (-1 == (*iter).find(*siter))//去重
+					//{
 					(*iter) += (*sIter);
-					n = 0;//读取到字符，则空字符串不连续，计数器置零
+						n = 0;//读取到字符，则空字符串不连续，计数器置零
+					//}
 				}
-			}
-			else
-			{
-				n++;
-				if (n > 1)//连续空格，则舍弃
+				else
 				{
-					continue;
-					n = 0;
+					n++;
+					if (n > 1)//连续空格，则舍弃
+					{
+						continue;
+						n = 0;
+					}
+					(*iter) += ' ';//换成空格
 				}
-				(*iter) += ' ';//换成空格
+						 				
 			}
-				 				
-		}
-		s.clear();
+			s.clear();
+			data.push_back((*iter));
+		}		
 	}
 }
 void sortData(vector<string>& data)
 {//字符串排序
 	if (data.empty())
 		cout << "vector is empty!" << endl;
-	vector<string>::iterator iter;
-	for (iter = data.begin(); iter != data.end(); ++iter)
-	{
-		sort((*iter).begin(), (*iter).end());
-	}
+	sort(data.begin(), data.end());
+	//vector<string>::iterator iter;
+	//for (iter = data.begin(); iter != data.end(); ++iter)
+	//{
+	//	sort((*iter).begin(), (*iter).end());
+	//}
 }
 void deletMark(string& s, string mark)
 {//删除字符串的某个字符
@@ -161,6 +196,7 @@ int main()
 	cout << "data : " << endl;
 	coutVector(data);
 	cout << endl << endl;
+
 
 	intputData(data,legalData,illegalData);
 	
