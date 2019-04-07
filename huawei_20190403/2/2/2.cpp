@@ -55,7 +55,7 @@ void stringTrim(vector<string>& data)
 	vector<string>::iterator iter;
 	string::iterator sIter;
 	string s;
-	int n = 0;
+	int n = 0;//计数器
 	for (iter = data.begin(); iter != data.end(); ++iter)
 	{
 		s = (*iter);			//先将字符串删除，然后将处理后的字符串重新填回来
@@ -66,12 +66,15 @@ void stringTrim(vector<string>& data)
 				(*sIter >= 'A' && *sIter <= 'Z'))
 			{
 				if (-1 == (*iter).find(*sIter))//去重
+				{
 					(*iter) += (*sIter);
+					n = 0;//读取到字符，则空字符串不连续，计数器置零
+				}
 			}
 			else
 			{
 				n++;
-				if (n > 1)
+				if (n > 1)//连续空格，则舍弃
 				{
 					continue;
 					n = 0;
