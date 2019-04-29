@@ -133,7 +133,57 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
             return pHead2;
         }
 }
-
+/*非递归解法*/
+ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+{
+	if (pHead1 == NULL )
+		return pHead2;
+	if (pHead2 == NULL)
+		return pHead1;
+	ListNode* merge = NULL;
+	ListNode* current = NULL;
+	if (pHead1->val <= pHead2->val)
+	{
+		current = pHead1;
+		pHead1 = pHead1->next;
+	}
+	else
+	{
+		current = pHead2;
+		pHead2 = pHead2->next;
+	}
+	merge = current;
+	while(pHead1 != NULL || pHead2 != NULL)
+	{
+		if(pHead1 == NULL)
+		{
+			current->next = pHead2;
+			current = current->next;
+			pHead2 = pHead2->next;
+			continue;
+		}
+		if(pHead2 == NULL)
+		{
+			current->next = pHead1;
+			current = current->next;
+			pHead1  = pHead1->next;
+			continue;
+		}
+		if (pHead1->val <= pHead2->val)
+		{
+			current->next = pHead1;
+			current = current->next;
+			pHead1 = pHead1->next;
+		}
+		else
+		{
+			current->next = pHead2;
+			current = current->next;
+			pHead2 = pHead2->next;
+		}
+	}
+	return merge;
+}
 int main()
 {
 	/*vector<int> array;
