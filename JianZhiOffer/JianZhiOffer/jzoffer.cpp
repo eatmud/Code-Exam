@@ -5,11 +5,11 @@
 
 using namespace std;
 
-//ÌâÄ¿ÃèÊö
-//ÊäÈëÒ»¸öÕûÊýÊý×é£¬ÊµÏÖÒ»¸öº¯ÊýÀ´µ÷Õû¸ÃÊý×éÖÐÊý×ÖµÄË³Ðò£¬Ê¹µÃËùÓÐµÄÆæÊýÎ»ÓÚÊý×éµÄÇ°°ë²¿·Ö£¬
-//ËùÓÐµÄÅ¼ÊýÎ»ÓÚÊý×éµÄºó°ë²¿·Ö£¬²¢±£Ö¤ÆæÊýºÍÆæÊý£¬Å¼ÊýºÍÅ¼ÊýÖ®¼äµÄÏà¶ÔÎ»ÖÃ²»±ä¡£
-//½âÌâË¼Â·
-//ÁíÍâ´´½¨Á½¸öÊý×é£¬´æ·ÅÆæÊýÓëÅ¼Êý£¬È»ºóÇå¿ÕÔ­Ê¼Êý×é£¬ÖØÐÂÐ´Èë
+//é¢˜ç›®æè¿°
+//è¾“å…¥ä¸€ä¸ªæ•´æ•°æ•°ç»„ï¼Œå®žçŽ°ä¸€ä¸ªå‡½æ•°æ¥è°ƒæ•´è¯¥æ•°ç»„ä¸­æ•°å­—çš„é¡ºåºï¼Œä½¿å¾—æ‰€æœ‰çš„å¥‡æ•°ä½äºŽæ•°ç»„çš„å‰åŠéƒ¨åˆ†ï¼Œ
+//æ‰€æœ‰çš„å¶æ•°ä½äºŽæ•°ç»„çš„åŽåŠéƒ¨åˆ†ï¼Œå¹¶ä¿è¯å¥‡æ•°å’Œå¥‡æ•°ï¼Œå¶æ•°å’Œå¶æ•°ä¹‹é—´çš„ç›¸å¯¹ä½ç½®ä¸å˜ã€‚
+//è§£é¢˜æ€è·¯
+//å¦å¤–åˆ›å»ºä¸¤ä¸ªæ•°ç»„ï¼Œå­˜æ”¾å¥‡æ•°ä¸Žå¶æ•°ï¼Œç„¶åŽæ¸…ç©ºåŽŸå§‹æ•°ç»„ï¼Œé‡æ–°å†™å…¥
 void reOrderArray(vector<int> &array) 
 {
 	vector<int> odd;
@@ -29,10 +29,10 @@ void reOrderArray(vector<int> &array)
 	array.insert(array.end(), even.begin(), even.end());
 }
 
-//ÌâÄ¿ÃèÊö
-//ÊäÈëÒ»¸öÁ´±í£¬Êä³ö¸ÃÁ´±íÖÐµ¹ÊýµÚk¸ö½áµã¡£
-//½â·¨Ò»£ºÁ½´Î±éÀú
-//½â·¨¶þ£ºÓÃÁ½¸öÖ¸Õë£¬µÚÒ»¸öÖ¸ÕëÏÈ×ßk¸ö½áµã£¬È»ºóÁ½¸öÖ¸ÕëÍ¬Ê±×ß£¬Ö±µ½±éÀúÍêÕû¸öÁ´±í
+//é¢˜ç›®æè¿°
+//è¾“å…¥ä¸€ä¸ªé“¾è¡¨ï¼Œè¾“å‡ºè¯¥é“¾è¡¨ä¸­å€’æ•°ç¬¬kä¸ªç»“ç‚¹ã€‚
+//è§£æ³•ä¸€ï¼šä¸¤æ¬¡éåŽ†
+//è§£æ³•äºŒï¼šç”¨ä¸¤ä¸ªæŒ‡é’ˆï¼Œç¬¬ä¸€ä¸ªæŒ‡é’ˆå…ˆèµ°kä¸ªç»“ç‚¹ï¼Œç„¶åŽä¸¤ä¸ªæŒ‡é’ˆåŒæ—¶èµ°ï¼Œç›´åˆ°éåŽ†å®Œæ•´ä¸ªé“¾è¡¨
 struct ListNode
 {
 	int val;
@@ -42,7 +42,7 @@ struct ListNode
 };
 ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) 
 {
-//½â·¨¶þ
+//è§£æ³•äºŒ
 	if (k <= 0 || pListHead == NULL)
 		return NULL;
 	ListNode* pf = pListHead;
@@ -60,7 +60,7 @@ ListNode* FindKthToTail(ListNode* pListHead, unsigned int k)
 		pb = pb->next;
 	}
 	return pb;
-//½â·¨Ò»
+//è§£æ³•ä¸€
 	//int length = 0;
 	//ListNode* current = pListHead;
 	//int n = 0;
@@ -83,12 +83,12 @@ ListNode* FindKthToTail(ListNode* pListHead, unsigned int k)
 	//return current;
 }
 //
-//ÌâÄ¿ÃèÊö
-//ÊäÈëÒ»¸öÁ´±í£¬·´×ªÁ´±íºó£¬Êä³öÐÂÁ´±íµÄ±íÍ·¡£
-//½âÌâË¼Â·
-//ÐèÒª¶¨ÒåËÄ¸öÁÙÊ±±äÁ¿£¬Ç°Ò»¸ö½áµãpre£¬ÏÂÒ»¸ö½áµãpnext£¬µ±Ç°½áµãcurrent£¬ÐÂÁ´±í±íÍ·rev
-//1.Ê×ÏÈÅÐ¶ÏÊÇ·ñÊÇ¿ÕÁ´±í
-//2.³õÊ¼»¯pre¡¢pnext¡¢revÎªNULL£¬currentÎªpHEAD.
+//é¢˜ç›®æè¿°
+//è¾“å…¥ä¸€ä¸ªé“¾è¡¨ï¼Œåè½¬é“¾è¡¨åŽï¼Œè¾“å‡ºæ–°é“¾è¡¨çš„è¡¨å¤´ã€‚
+//è§£é¢˜æ€è·¯
+//éœ€è¦å®šä¹‰å››ä¸ªä¸´æ—¶å˜é‡ï¼Œå‰ä¸€ä¸ªç»“ç‚¹preï¼Œä¸‹ä¸€ä¸ªç»“ç‚¹pnextï¼Œå½“å‰ç»“ç‚¹currentï¼Œæ–°é“¾è¡¨è¡¨å¤´rev
+//1.é¦–å…ˆåˆ¤æ–­æ˜¯å¦æ˜¯ç©ºé“¾è¡¨
+//2.åˆå§‹åŒ–preã€pnextã€revä¸ºNULLï¼Œcurrentä¸ºpHEAD.
 //3.pext = current->next;
 //  current->next = prev;
 //  pre = current;
@@ -113,40 +113,25 @@ ListNode* ReverseList(ListNode* pHead)
 	return rev;
 }
 
-//ÊäÈëÁ½¸öµ¥µ÷µÝÔöµÄÁ´±í£¬Êä³öÁ½¸öÁ´±íºÏ³ÉºóµÄÁ´±í£¬µ±È»ÎÒÃÇÐèÒªºÏ³ÉºóµÄÁ´±íÂú×ãµ¥µ÷²»¼õ¹æÔò¡£
+//è¾“å…¥ä¸¤ä¸ªå•è°ƒé€’å¢žçš„é“¾è¡¨ï¼Œè¾“å‡ºä¸¤ä¸ªé“¾è¡¨åˆæˆåŽçš„é“¾è¡¨ï¼Œå½“ç„¶æˆ‘ä»¬éœ€è¦åˆæˆåŽçš„é“¾è¡¨æ»¡è¶³å•è°ƒä¸å‡è§„åˆ™ã€‚
+//è§£æ³•ä¸€ï¼šé€’å½’å®žçŽ°
+//
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 {
-	if (pHead1 == NULL && pHead2 != NULL)
-		return pHead2;
-	else if (pHead1 != NULL && pHead2 == NULL)
-		return pHead1;
-	else if (pHead1 == NULL && pHead2 == NULL)
-		return NULL;
-	ListNode* ans = pHead1->val > pHead2->val ? pHead1 : pHead2;
-	ListNode* baseCurrent = ans;
-	ListNode* temp = NULL;
-	int baseVal, comVal;
-	ListNode* comCurrent = NULL;
-	if (ans == pHead1)
-		comCurrent = pHead2;
-	else if (ans == pHead2)
-		comCurrent = pHead1;
-	while (comCurrent != NULL)
-	{
-		comVal = comCurrent->val;
-		baseVal = baseCurrent->val;
-		while (baseVal < comVal && baseCurrent->next != NULL)
-		{
-			baseCurrent = baseCurrent->next;
-			baseVal = baseCurrent->val;
-		}
-		temp = baseCurrent;
-		baseCurrent->next = comCurrent;
-		baseCurrent->next->next = temp->next;
-		baseCurrent = temp->next;
-		comCurrent = comCurrent->next;
-	}
-	return ans;
+	if (pHead1 == NULL )
+		    return pHead2;
+	    if (pHead2 == NULL)
+		    return pHead1;
+        if (pHead1->val <= pHead2->val)
+        {
+            pHead1->next = Merge(pHead1->next,pHead2);
+            return pHead1;
+        }
+        else
+        {
+            pHead2->next = Merge(pHead1,pHead2->next);
+            return pHead2;
+        }
 }
 
 int main()
