@@ -133,7 +133,7 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
             return pHead2;
         }
 }
-/*非递归解法*/
+/*非递归解法
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 {
 	if (pHead1 == NULL )
@@ -184,6 +184,7 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 	}
 	return merge;
 }
+*/
 int main()
 {
 	/*vector<int> array;
