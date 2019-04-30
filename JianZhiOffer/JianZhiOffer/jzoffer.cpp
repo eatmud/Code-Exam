@@ -185,6 +185,44 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
 	return merge;
 }
 */
+//题目描述
+//输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+//解题思路
+//1.树首选递归。
+//2.一棵树是否为另一棵树的子结构，判断根节点、左子树、右子树是否都相等。
+
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+			val(x), left(NULL), right(NULL) {
+	}
+};
+class Solution {
+public:
+    static bool isSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+    {
+        if(pRoot2 == NULL)//tree2遍历完成，依然相等，返回true
+            return true;
+        if(pRoot1 == NULL)//tree2遍历未完成，但tree1已完成遍历，返回false
+            return false;
+        if(pRoot1->val == pRoot2->val)//如果根节点相等，则递归判断左右子树是否相等
+            return isSubtree(pRoot1->left,pRoot2->left) 
+                    && isSubtree(pRoot1->right,pRoot2->right);
+        else
+            return false;
+    }
+    bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+    {
+        if(pRoot1 == NULL || pRoot2 == NULL)
+            return false;
+        return isSubtree(pRoot1,pRoot2) ||	//以此根节点为起点，判断是否为子树
+               HasSubtree(pRoot1->left,pRoot2) || //以左孩子为起点，寻找左子树是否有子树
+               HasSubtree(pRoot1->right,pRoot2); //以右孩子为起点，寻找右子树是否有子树
+    }
+};
+
 int main()
 {
 	/*vector<int> array;
