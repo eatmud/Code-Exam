@@ -258,6 +258,26 @@ public:
     }
 };
 
+class Solution3 {
+public:
+    vector<int> printMatrix(vector<vector<int> > matrix) {
+        if(matrix.empty())
+            return {}；
+        vector<int> prin
+        int lineNum = matrix.size();
+        int rowNum = matrix[0].size();
+        int size = lineNum * rowNum;
+        int num  = 0;
+        int i = 0,j = 0;
+        while(lineNum)
+        {
+            while(j < rowNum)
+            {
+                
+            }
+        }
+    }
+};
 int main()
 {
 	/*vector<int> array;
