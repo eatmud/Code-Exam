@@ -332,6 +332,26 @@ private:
 借助一个辅助栈，将压入顺序压入辅助栈，然后比较辅助栈栈顶元素与弹出顺序是否相等，如果相等，则辅助栈pop，弹出顺序数组右移一位，否则，进入下一个循环
 继续向辅助栈压入进栈顺序。
 */
+class Solution5 {
+public:
+    bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+        stack<int> temp;
+        if(pushV.empty() || popV.empty())
+            return false;
+        int j = 0;
+        int i = 0;
+        for(;i < pushV.size();++i)
+        {
+            temp.push(pushV[i]);
+            while(j < popV.size() && temp.top() == popV[j])
+            {
+                temp.pop();
+                ++j;
+            }
+        }
+        return temp.empty();
+    }
+};
 int main()
 {
 	/*vector<int> array;
