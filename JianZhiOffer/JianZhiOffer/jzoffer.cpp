@@ -258,25 +258,70 @@ public:
     }
 };
 
+/*
+题目描述
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，
+例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ，
+则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+解题思路：
+定义矩阵的每一个循环的打印范围，即左上角元素、右下角的位置，为了防止重复打印（即出现单行单列），在打印下行与左列时判断是否为单行单列
+*/
 class Solution3 {
 public:
     vector<int> printMatrix(vector<vector<int> > matrix) {
-        if(matrix.empty())
-            return {}；
-        vector<int> prin
-        int lineNum = matrix.size();
-        int rowNum = matrix[0].size();
-        int size = lineNum * rowNum;
-        int num  = 0;
-        int i = 0,j = 0;
-        while(lineNum)
-        {
-            while(j < rowNum)
-            {
-                
-            }
-        }
+        if (matrix.empty())
+		return{};
+	vector<int> res;
+	int lineNum = matrix.size();
+	int rowNum = matrix[0].size();
+	int left = 0, top = 0;//左上
+	int bottom = lineNum - 1,right = rowNum - 1;//右下
+	int i;
+	while (left <= right && top <= bottom)
+	{
+		for (i = left; i <= right; ++i)
+			res.push_back(matrix[top][i]);
+		for (i = top + 1; i <= bottom; ++i)
+			res.push_back(matrix[i][right]);
+		for (i = right - 1; i >= left && top != bottom; --i)
+			res.push_back(matrix[bottom][i]);
+		for (i = bottom - 1; i > top && left != right; --i)
+			res.push_back(matrix[i][left]);
+		left++, top++, right--, bottom--;
+	}
+	return res;
     }
+};
+
+/*
+题目描述
+定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。
+解题思路
+定义一个辅助栈，存放最小值；定义一个目标栈，一般意义上的栈。
+入栈：目标栈正常入栈。当入栈元素小于等于辅助栈栈顶元素时，将入栈元素压入辅助栈，否则，不压入辅助栈；辅助栈为空时，元素压入辅助栈
+出栈：目标栈栈顶元素等于辅助栈栈顶元素时，辅助栈出栈。目标栈正常出栈。
+*/
+class Solution4 {
+public:
+    void push(int value) {
+        objStack.push(value);
+        if(minStack.empty()) minStack.push(value);
+        if(value <= minStack.top()) minStack.push(value);
+    }
+    void pop() {
+        if(minStack.top() == objStack.top())
+            minStack.pop();
+        objStack.pop();
+    }
+    int top() {
+        return objStack.top();
+    }
+    int min() {
+        return minStack.top();
+    }
+private:
+    stack<int> minStack;
+    stack<int> objStack;
 };
 int main()
 {
