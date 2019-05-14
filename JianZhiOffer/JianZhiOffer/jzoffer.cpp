@@ -352,6 +352,36 @@ public:
         return temp.empty();
     }
 };
+/*
+题目描述
+二叉树的层次遍历
+解题思路
+借用一个队列，依次将树节点按照根、左孩子、右孩子进队，然后每次出队一个
+*/
+class Solution6 {
+public:
+    vector<int> PrintFromTopToBottom(TreeNode* root) {
+        vector<int> res;
+        if(root == NULL)
+            return res;
+        queue<TreeNode*> q;
+        q.push(root);//根节点入队
+        while(!q.empty())
+        {
+            res.push_back(q.front()->val);//将元素添加到数组
+            if(q.front()->left != NULL)//左孩子入队
+                q.push(q.front()->left);
+            if(q.front()->right != NULL)//右孩子入队
+                q.push(q.front()->right);
+            q.pop();//队首元素出队
+        }
+        return res;
+    }
+};
+/*
+题目描述
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
+*/
 int main()
 {
 	/*vector<int> array;
